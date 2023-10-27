@@ -48,4 +48,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{env.REGISTRY_USERNAME}}/bitnami-mongodb:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
+          tags: ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
