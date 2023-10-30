@@ -49,7 +49,8 @@ jobs:
         with:
           context: mongodb/6.0/debian-11
           # push: true
-          tags: ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
+          tags: ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb/${{env.DOCKER_ITEM}}:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
       - name: Push image
-        run: docker push ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb/${{env.DOCKER_ITEM}}:${{env.PREFIX}}${{
+        run:
+          docker push ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb/${{env.DOCKER_ITEM}}:${{env.PREFIX}}${{
           steps.slug.outputs.sha8 }}
