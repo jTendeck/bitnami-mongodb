@@ -23,6 +23,7 @@ env:
   REGISTRY_USERNAME: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
   REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
   PREFIX: 6.0-
+  DOCKER_ITEM: "bitnami-ps"
 
 jobs:
   docker:
@@ -47,5 +48,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: mongodb/6.0/debian-11
-          push: true
+          # push: true
           tags: ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
+      - name: Push image
+        run: docker push ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb/${{env.DOCKER_ITEM}}:${{env.PREFIX}}${{
+          steps.slug.outputs.sha8 }}
