@@ -46,7 +46,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: mongodb/6.0/debian-11/Dockerfile
+          context: ./mongodb/6.0/debian-11
+          file: Dockerfile
           push: true
           tags: ${{ env.REGISTRY }}/jtendeck/bitnami-mongodb:${{env.PREFIX}}${{steps.slug.outputs.sha8 }}
